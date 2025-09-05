@@ -6,7 +6,7 @@ public class Disciplina extends ObjetoPersistente  {
         super(oid);
     }
 
-    public void setNome(String nome) {
+    public void setNome_disc(String nome) {
         this.nome_disc = nome;
     }
 
@@ -14,7 +14,7 @@ public class Disciplina extends ObjetoPersistente  {
         this.cargaHoraria = cargaHoraria;
     }
 
-    public String getNome() {
+    public String getNome_disc() {
         return nome_disc;
     }
 

@@ -9,7 +9,7 @@ public class FabricanteDeMapeador {
     private FabricanteDeMapeador(){
         colecaoMapeadores = new Hashtable<String, IMapeador>();
             // registro de mapeadores
-            colecaoMapeadores.put("Aluno", new MapeadorAluno());
+            colecaoMapeadores.put("Aluno", new MapeadorAluno("Aluno"));
             colecaoMapeadores.put("Disciplina", new MapeadorDisciplina());
             colecaoMapeadores.put("Matricula", new MapeadorMatricula());
     }
