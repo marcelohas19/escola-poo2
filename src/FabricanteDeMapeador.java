@@ -10,8 +10,8 @@ public class FabricanteDeMapeador {
         colecaoMapeadores = new Hashtable<String, IMapeador>();
             // registro de mapeadores
             colecaoMapeadores.put("Aluno", new MapeadorAluno("Aluno"));
-            colecaoMapeadores.put("Disciplina", new MapeadorDisciplina());
-            colecaoMapeadores.put("Matricula", new MapeadorMatricula());
+            colecaoMapeadores.put("Disciplina", new MapeadorDisciplina("Disciplina"));
+            colecaoMapeadores.put("Matricula", new MapeadorMatricula("Matricula"));
     }
 
 
