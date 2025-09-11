@@ -1,13 +1,13 @@
 import java.sql.ResultSet;
 
-public class MapeadorDeBRAbstrado extends MapeadorDePersistenciaAbstrada {
+public class MapeadorDeBDAbstrato extends MapeadorDePersistenciaAbstrata implements IMapeador{
     private String nomeTabela;
 
     protected String getNomeTabela(){
         return nomeTabela;
     }
 
-    public MapeadorDeBRAbstrado(String nomeTabela){
+    public MapeadorDeBDAbstrato(String nomeTabela){
         this.nomeTabela = nomeTabela;
     }
 
@@ -47,8 +47,8 @@ public class MapeadorDeBRAbstrado extends MapeadorDePersistenciaAbstrada {
     }
 
     @Override
-    protected Boolean excluirDoArmazem(ObjetoPersistente ob) {
-        return excluirObjetoDoBD(excluirObjetoDoRegistro(ob));
+    protected Boolean excluirDoArmazem(Oid oid) {
+        return excluirObjetoDoBD(excluirObjetoDoRegistro(oid));
     }
 
     private boolean excluirObjetoDoBD(String oid){
@@ -56,7 +56,7 @@ public class MapeadorDeBRAbstrado extends MapeadorDePersistenciaAbstrada {
         return ConexaoBD.obterInstancia().excluir(sql);
     }
 
-    protected String excluirObjetoDoRegistro(ObjetoPersistente ob) {
+    protected String excluirObjetoDoRegistro(Oid oid) {
         return null;
     }
 

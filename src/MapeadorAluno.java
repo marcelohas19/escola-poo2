@@ -1,7 +1,7 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MapeadorAluno extends MapeadorDeBRAbstrado {
+public class MapeadorAluno extends MapeadorDeBDAbstrato implements IMapeador{
 
     public MapeadorAluno(String nomeTabela) {
         super(nomeTabela);
@@ -12,7 +12,7 @@ public class MapeadorAluno extends MapeadorDeBRAbstrado {
         Aluno aluno = null;
         try {
             if(registro_bd.next()){
-                aluno = new Aluno(oid);;
+                aluno = new Aluno(oid);
                 aluno.setNome_aluno(registro_bd.getString(2));
             }
         } catch (SQLException e) {
@@ -28,8 +28,8 @@ public class MapeadorAluno extends MapeadorDeBRAbstrado {
         return sql;
     }
 
-    protected String excluirObjetoDoRegistro(ObjetoPersistente ob) {
-        return ob.getOid().getString();
+    protected String excluirObjetoDoRegistro(Oid oid) {
+        return oid.getString();
     }
 
     protected String atualizaObjetoNoRegistro(ObjetoPersistente ob) {

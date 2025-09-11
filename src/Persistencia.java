@@ -15,14 +15,17 @@ public class Persistencia {
     }
 
     public boolean inserir(ObjetoPersistente ob){
-        return false;
+        IMapeador mapeador = (IMapeador) FabricanteDeMapeador.obterInstancia().getMapeador(ob.getClass());
+        return mapeador.inserir(ob);
     }
 
-    public boolean atualizar(ObjetoPersistente oid){
-        return false;
+    public boolean atualizar(ObjetoPersistente ob){
+        IMapeador mapeador = (IMapeador) FabricanteDeMapeador.obterInstancia().getMapeador(ob.getClass());
+        return mapeador.atualizar(ob);
     }
 
-    public boolean excluir(ObjetoPersistente ob){
-        return false;
+    public boolean excluir(Oid oid, Class<?> classeDePersistencia){
+        IMapeador mapador = (IMapeador) FabricanteDeMapeador.obterInstancia().getMapeador(classeDePersistencia);
+        return mapador.excluir(oid);
     }
 }

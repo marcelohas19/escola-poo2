@@ -1,6 +1,6 @@
 import java.util.Hashtable;
 
-public abstract class MapeadorDePersistenciaAbstrada implements IMapeador{
+public abstract class MapeadorDePersistenciaAbstrata implements IMapeador{
     private Hashtable<String, ObjetoPersistente>cache = new Hashtable<String, ObjetoPersistente>();
 
     public ObjetoPersistente obter(Oid oid){
@@ -30,17 +30,17 @@ public abstract class MapeadorDePersistenciaAbstrada implements IMapeador{
     }
     protected abstract Boolean inserirObjetoNoArmazem(ObjetoPersistente ob);
 
-    public boolean excluir(ObjetoPersistente ob){
-        if(obter(ob.getOid()) != null){
-            if(excluirDoArmazem(ob)){
-                cache.remove(ob.getOid().getString());
+    public boolean excluir(Oid oid){
+        if(obter(oid) != null){
+            if(excluirDoArmazem(oid)){
+                cache.remove(oid.getString());
                 return true;
             }
         }
         return false;
     }
 
-    protected abstract Boolean excluirDoArmazem(ObjetoPersistente ob);
+    protected abstract Boolean excluirDoArmazem(Oid oid);
 
     public boolean atualizar(ObjetoPersistente ob){
         if(obter(ob.getOid()) != null){

@@ -1,7 +1,7 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class MapeadorDisciplina extends MapeadorDeBRAbstrado {
+public class MapeadorDisciplina extends MapeadorDeBDAbstrato implements IMapeador{
 
     public MapeadorDisciplina(String nomeTabela) {
         super(nomeTabela);
@@ -12,7 +12,7 @@ public class MapeadorDisciplina extends MapeadorDeBRAbstrado {
         Disciplina disciplina = null;
         try {
             if(registro_bd.next()){
-                disciplina = new Disciplina(oid);;
+                disciplina = new Disciplina(oid);
                 disciplina.setNome_disc(registro_bd.getString(2));
                 disciplina.setCargaHoraria(registro_bd.getInt(3));
             }
@@ -29,8 +29,8 @@ public class MapeadorDisciplina extends MapeadorDeBRAbstrado {
         return sql;
     }
 
-    protected String excluirObjetoDoRegistro(ObjetoPersistente ob) {
-        return ob.getOid().getString();
+    protected String excluirObjetoDoRegistro(Oid oid) {
+        return oid.getString();
     }
 
     protected String atualizaObjetoNoRegistro(ObjetoPersistente ob) {
